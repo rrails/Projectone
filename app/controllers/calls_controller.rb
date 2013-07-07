@@ -5,11 +5,9 @@ class CallsController < ApplicationController
 
   def new
     @call = Call.new
-
   end
 
   def create
-    binding.pry
     call = Call.create(params[:call])
     redirect_to(call)
   end
@@ -24,7 +22,6 @@ class CallsController < ApplicationController
 
   def update
     call = Call.find(params[:id]) #find the call we want to update
-    binding.pry
     call.update_attributes(params[:call])
     redirect_to(call)
   end

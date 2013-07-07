@@ -1,7 +1,7 @@
 Questions
 
 - where do I call the api
-
+How do I update attendees - attributes?
 
 User capture validation
   - validate the city
@@ -12,7 +12,6 @@ User capture validation
 Call validation
   - display time in local time zone
 
-
 Where should bootstrap be installed on Rails - does it go in assets sub directory?
 draw the user functions
 
@@ -22,3 +21,20 @@ Inquiry screen
   user - which meetings is he booked for?
 
   how do I create attendees in the seed file?
+
+  Screens
+
+  Home screen
+    logo - Meeting Planner
+    Menu button
+      Users
+        Add user - that then goes to show the user added
+        edit user - that then goes to show the updated user
+        delete user -
+      Calls
+        Add call
+        edit call
+        delete
+
+
+

@@ -1,11 +1,15 @@
 <div class = 'detail'>
+  <table>
   <% @users.each do |user| %>
-    <ul class='item'>
-      <li><%= user.name %></li>
-      <li><%= user.preferredstarttime.strftime('%T %L') %></li>
-    </ul>
-    <%=  link_to 'Edit', edit_user_path(user)%>
+    <tr class='item'>
+      <td><%= user.name %></td>
+      <td><%= user.location %></td>
+      <td><%= user.preferredstarttime.strftime('%H:%M') %></td>
+      <td><%= user.preferredendtime.strftime('%H:%M') %></td>
+    <td><%=  link_to 'Edit', edit_user_path(user)%></td>
 <!-- This deletes the record without showing the data -->
-<%= link_to 'delete', user, :method => :delete %>
+<td><%= link_to 'delete', user, :method => :delete %></td>
+    </tr>
+
   <% end %>
 </div>

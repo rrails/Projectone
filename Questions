@@ -1,5 +1,24 @@
 Questions
 
 - where do I call the api
-- how do I write to the 3rd table
-  - I have a table called call , user and attendee
+
+
+User capture validation
+  - validate the city
+  - validate that it is not a duplication
+  - ensure start time is before end time
+  -
+
+Call validation
+  - display time in local time zone
+
+
+Where should bootstrap be installed on Rails - does it go in assets sub directory?
+draw the user functions
+
+Which API to use based on location to convert to use for timezones.
+Inquiry screen
+
+  user - which meetings is he booked for?
+
+  how do I create attendees in the seed file?

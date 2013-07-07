@@ -13,7 +13,7 @@
 
 class User < ActiveRecord::Base
   attr_accessible :name, :location, :preferredstarttime, :preferredendtime
-  has_many :attendes
-  has_many :calls, :through => :attendes
+  has_many :attendees
+  has_many :calls, :through => :attendees
 
 end

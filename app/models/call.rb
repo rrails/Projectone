@@ -13,7 +13,7 @@
 #
 
 class Call < ActiveRecord::Base
-  attr_accessible :subject, :description, :owner, :date,:time, :attende_ids, :user_ids
-  has_many :attendes
-  has_many :users, :through => :attendes
+  attr_accessible :subject, :description, :owner, :date,:time, :attendee_ids, :user_ids
+  has_many :attendees
+  has_many :users, :through => :attendees
 end

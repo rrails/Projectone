@@ -1,0 +1,24 @@
+<%= form_for @attendee do |f| %>
+
+  <%= f.label :user_id %>
+  <%= f.text_field :user_id %>
+  <br>
+  <%= f.label :call_id %>
+  <%= f.text_field :call_id %>
+  <br>
+  <%= f.label :meetingdate %>
+  <%= f.text_field :meetingdate%>
+  <br>
+  <%= f.label :dateinvited %>
+  <%= f.text_field :dateinvited %>
+  <br>
+   <%= f.label :dateofreminder %>
+   <%= f.text_field :dateofreminder %>
+  <br>
+   <%= f.label :accepted %>
+   <%= f.text_field :accepted %>
+
+
+  <%= f.submit %>
+
+<% end %>

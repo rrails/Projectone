@@ -1,0 +1,50 @@
+input.addinput {
+  height: 30px;
+}
+
+.clip {
+  margin-top: 30px;
+}
+
+.btn {
+  margin-top: 2px;
+}
+
+.btn.edit {
+  margin-left: 10px
+}
+
+
+.btn-large  {
+  height: 44px;
+}
+
+.addform {
+  margin-top: 40px;
+}
+
+dt,dd {
+  line-height: 40px;
+  font-size: 24px;
+}
+
+.nav a{
+  font-size: 18px;
+  color: grey;
+}
+
+.navbar .nav{
+  margin-top: 10px;
+}
+
+.head h1 {
+  margin-left: 30px;
+}
+li{
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+body{
+background-image: url('/patterns03a.jpg');
+}

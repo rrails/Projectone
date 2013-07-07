@@ -1,0 +1,18 @@
+<%= form_for @user do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+  <br>
+  <%= f.label :preferredstarttime %>
+  <%= f.text_field :preferredstarttime %>
+  <br>
+  <%= f.label :preferredendtime %>
+  <%= f.text_field :preferredendtime %>
+  <br>
+  <%= f.submit %>
+
+<% end %>
+

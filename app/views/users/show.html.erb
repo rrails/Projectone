@@ -1,0 +1,7 @@
+<h3> <%= @user.name %></h3>
+  <li><%= @user.name %></li>
+
+<!-- this goes to a form to show the edit fields -->
+<%=  link_to 'Edit', edit_user_path(@user)%>
+<!-- This deletes the record without showing the data -->
+<%= link_to 'delete', @user, :method => :delete %>

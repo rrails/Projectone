@@ -1,0 +1,24 @@
+<%= form_for @call do |f| %>
+
+  <%= f.label :subject %>
+  <%= f.text_field :subject %>
+  <br>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <br>
+  <%= f.label :owner %>
+  <%= f.text_field :owner %>
+  <br>
+  <%= f.label :date %>
+  <%= f.text_field :date %>
+  <br>
+   <%= f.label :time %>
+   <%= f.text_field :time %>
+  <br>
+  <% User.order(:user).each do |user| %>
+    <span><%= user.name %></span>
+    <%= check_box_tag 'call[user_ids][]', user.id, user.in?(@call.users) %>
+    <% end %>
+  <%= f.submit %>
+
+<% end %>

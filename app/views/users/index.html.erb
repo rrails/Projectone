@@ -1,0 +1,11 @@
+<div class = 'detail'>
+  <% @users.each do |user| %>
+    <ul class='item'>
+      <li><%= user.name %></li>
+      <li><%= user.preferredstarttime.strftime('%T %L') %></li>
+    </ul>
+    <%=  link_to 'Edit', edit_user_path(user)%>
+<!-- This deletes the record without showing the data -->
+<%= link_to 'delete', user, :method => :delete %>
+  <% end %>
+</div>

@@ -17,7 +17,10 @@
   <br>
   <% User.order(:user).each do |user| %>
     <span><%= user.name %></span>
+    <span><%= user.preferredstarttime %></span>
+    <span><%= user.preferredendtime %></span>
     <%= check_box_tag 'call[user_ids][]', user.id, user.in?(@call.users) %>
+    <br>
     <% end %>
   <%= f.submit %>
 

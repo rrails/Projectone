@@ -3,6 +3,8 @@
 # Table name: attendes
 #
 #  id             :integer          not null, primary key
+#  user_id        :integer
+#  call_id        :integer
 #  meetingdate    :date
 #  dateinvited    :date
 #  dateofreminder :date
@@ -10,9 +12,9 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-require 'composite_primary_keys'
+
+
 class Attende < ActiveRecord::Base
-self.primary_keys = :call_id, :user_id
 
 attr_accessible :meetingdate, :dateinvited, :dateofreminder, :accepted, :call_id, :user_id
 belongs_to :call

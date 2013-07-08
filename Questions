@@ -1,44 +1,31 @@
 Questions
 
-API questions
-- where do I call the api
-- how do I convert location to timezone - can I hard code these or keep a database table with these. use seed to load this.
-
-adding users
-  - Ask user to enter their timezone
-  - on the database store the UTC times
+User show
+  - need to convert from UTC to user timezone before displaying the time. Needs to go in the form.
+  - default start timezone to 00.00
+  - default end timezone to 23:59
+  - ensure start time is before end time
+  - validate that it is not a duplication
+  - validate the city
+  - when user see the his meetings the meeting time should be in his timezone
 
 
 adding calls
-  - change the owners column name to organizer
-  - take owners timezone
-  - display users timezone to owners timezone
+  - take owners timezone to store meeting time in UTC on database
+  - display start time and end time from UTC to owners timezone
+  - convert meeting time from UTC to owners timezone for display
 
+Attendees
+  - we need to gir routing
+  - create our own routing
 
-- convert times from one timezone to another
-
-Associations
-  - used save in calls database. need to fix this later.
-
-User capture validation
-  - validate the city
-  - validate that it is not a duplication
-  - ensure start time is before end time
-  -
-
-Call validation
-  - display time in local time zone
-
-Which API to use based on location to convert to use for timezones.
 Inquiry screen
 
-  how do I create attendees in the seed file?
 
   Screens
 
   Home screen
     logo - Meeting Planner
-    need a folder in view called home and then a file called index.html.erb
 
 
     then go to applicationhtml.erb file
@@ -55,6 +42,20 @@ security
 - add this line to user.rb - has_secure_password
 - add gem to include  - gem 'bcrypt-ruby'
 - bundle
+
+
+      <td><%= user.preferredstarttime.strftime('%H:%M') %></td>
+
+Time.strptime(time_string, '%Y-%m-%dT%H:%M:%S%z').in_time_zone(Time.zone)
+
+Database changes
+- update attendee table to set boolean to false
+- update user table where the preferred st and end time are required or defaulted to a certain value
+- change the owners column name to organizer
+- add meeting time to attende table
+
+
+
 
 Screen 1
   logo        buttons user , new user, meeting, new meeting
@@ -94,6 +95,9 @@ Screen 1
         edit call
         delete
 
-
+-------
+  how do I create attendees in the seed file?
+  Associations
+  - used save in calls database. need to fix this later.
 
 

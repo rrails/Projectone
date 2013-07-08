@@ -11,7 +11,7 @@ class CallsController < ApplicationController
     call = Call.create(params[:call])
     call.attendees.each do |attendee|
       attendee.meetingdate = call.date
-      attendee.accepted = FALSE
+      attendee.accepted = FALSE # add this to database level
       attendee.save
     end
     redirect_to(call)

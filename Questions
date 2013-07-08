@@ -4,13 +4,21 @@ API questions
 - where do I call the api
 - how do I convert location to timezone - can I hard code these or keep a database table with these. use seed to load this.
 
+adding users
+  - Ask user to enter their timezone
+  - on the database store the UTC times
+
+
+adding calls
+  - change the owners column name to organizer
+  - take owners timezone
+  - display users timezone to owners timezone
+
+
 - convert times from one timezone to another
 
 Associations
-- How do I update attendees - attributes?
-  we need new in call
-  we need ...
-
+  - used save in calls database. need to fix this later.
 
 User capture validation
   - validate the city
@@ -18,16 +26,11 @@ User capture validation
   - ensure start time is before end time
   -
 
-Call validatio
+Call validation
   - display time in local time zone
-
-Where should bootstrap be installed on Rails - does it go in assets sub directory?
-draw the user functions
 
 Which API to use based on location to convert to use for timezones.
 Inquiry screen
-
-  user - which meetings is he booked for?
 
   how do I create attendees in the seed file?
 

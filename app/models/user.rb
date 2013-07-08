@@ -9,10 +9,11 @@
 #  preferredendtime   :time
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  timezone           :string(255)
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :location, :preferredstarttime, :preferredendtime
+  attr_accessible :name, :location, :preferredstarttime, :preferredendtime, :timezone
   has_many :attendees
   has_many :calls, :through => :attendees
 

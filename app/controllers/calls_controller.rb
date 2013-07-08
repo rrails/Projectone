@@ -9,6 +9,11 @@ class CallsController < ApplicationController
 
   def create
     call = Call.create(params[:call])
+    call.attendees.each do |attendee|
+      attendee.meetingdate = call.date
+      attendee.accepted = FALSE
+      attendee.save
+    end
     redirect_to(call)
   end
 

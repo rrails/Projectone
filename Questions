@@ -2,12 +2,15 @@ Questions
 
 API questions
 - where do I call the api
-- how do I convert location to timezone
+- how do I convert location to timezone - can I hard code these or keep a database table with these. use seed to load this.
+
 - convert times from one timezone to another
 
 Associations
 - How do I update attendees - attributes?
--
+  we need new in call
+  we need ...
+
 
 User capture validation
   - validate the city
@@ -15,7 +18,7 @@ User capture validation
   - ensure start time is before end time
   -
 
-Call validation
+Call validatio
   - display time in local time zone
 
 Where should bootstrap be installed on Rails - does it go in assets sub directory?
@@ -32,7 +35,53 @@ Inquiry screen
 
   Home screen
     logo - Meeting Planner
-    Menu button
+    need a folder in view called home and then a file called index.html.erb
+
+
+    then go to applicationhtml.erb file
+    add
+
+user errors
+  where do I put them in?
+
+
+
+security
+
+- add pasword col to table
+- add this line to user.rb - has_secure_password
+- add gem to include  - gem 'bcrypt-ruby'
+- bundle
+
+Screen 1
+  logo        buttons user , new user, meeting, new meeting
+
+  Users
+    Screen 2
+      Add new user
+      then go to list of users - screen 3
+    Screen 2A
+      Edit user
+      then go to list of users - screen 3
+
+    screen 3
+      list users - this also includes edit and delete
+      for edit got to screen 2A
+      for delete go to screen 3
+    screen 4
+      show user and meeting details
+
+  Meetings
+    screen 5
+      new meeting - this should show a list of users
+
+    screen 6
+      each meeting with attendees details
+
+
+
+
+ Menu button
       Users
         Add user - that then goes to show the user added
         edit user - that then goes to show the updated user
@@ -41,6 +90,7 @@ Inquiry screen
         Add call
         edit call
         delete
+
 
 
 

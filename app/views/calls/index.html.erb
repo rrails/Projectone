@@ -1,16 +1,17 @@
 <div class = 'detail'>
   <% @calls.each do |call| %>
     <ul class='item'>
-      <li><%= call.owner %></li>
-      <li><%= call.subject %></li>
-      <li><%= call.description %></li>
-      <li><%= call.date %></li>
-      <li><%= call.time %></li>
-      <hr>
+      <li>Owner <%= call.owner %></li>
+      <li>Subject <%= call.subject %></li>
+      <li>Description <%= call.description %></li>
+      <li>Date <%= call.date %></li>
+      <li>Time <%= call.time %></li>
     </ul>
     <!-- this goes to a form to show the edit fields -->
 <%=  link_to 'Edit', edit_call_path(call)%>
 <!-- This deletes the record without showing the data -->
 <%= link_to 'delete', call, :method => :delete %>
+      <hr>
+
   <% end %>
 </div>

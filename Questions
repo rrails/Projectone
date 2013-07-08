@@ -1,7 +1,13 @@
 Questions
 
+API questions
 - where do I call the api
-How do I update attendees - attributes?
+- how do I convert location to timezone
+- convert times from one timezone to another
+
+Associations
+- How do I update attendees - attributes?
+-
 
 User capture validation
   - validate the city

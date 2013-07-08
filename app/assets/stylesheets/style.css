@@ -1,0 +1,17 @@
+#container {
+  width: 960px;
+  margin: auto;
+}
+
+nav ul li{
+display: inline;
+list-style: none;
+}
+nav ul {
+  margin-left: none;
+  text-align: right;
+}
+
+a:hover{
+  text-decoration: underline;
+}

@@ -1,5 +1,10 @@
 Questions
 
+
+      = f.label :password
+      = f.password_field :password
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
 User show
   - need to convert from UTC to user timezone before displaying the time. Needs to go in the form.
   - default start timezone to 00.00
@@ -54,6 +59,7 @@ Database changes
 - update user table where the preferred st and end time are required or defaulted to a certain value
 - change the owners column name to organizer
 - add meeting time to attende table
+- make user unique
 
 
 

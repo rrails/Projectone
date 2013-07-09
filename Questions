@@ -11,6 +11,7 @@ User show
 
 
 adding calls
+  - where do we find the owners timezone - we don't have it at this stage yet.
   - take owners timezone to store meeting time in UTC on database
   - display start time and end time from UTC to owners timezone
   - convert meeting time from UTC to owners timezone for display

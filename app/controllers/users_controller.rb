@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
+  # around_filter :time_zone, :only => :edit
+
+  def time_zone(user, &block)
+    Time.use_zone(user.timezone, &block)
+  end
+
   def index
     @users = User.all
-    binding.pry
+    # binding.pry
 
   end
 
@@ -22,24 +28,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-# not sure if this code is needed.
-
-    # Time.zone = @user.timezone
-    # binding.pry
-    # @user.preferredstarttime = Time.use_zone(Time.zone) {Time.zone.parse(params[:user][:preferredstarttime]).in_time_zone(Time.zone)}
-    # @user.preferredendtime = Time.use_zone(Time.zone) {Time.zone.parse(params[:user][:preferredendtime]).in_time_zone(Time.zone)}
-
+    @user.preferredstarttime = @user.preferredstarttime.in_time_zone(@user.timezone)
+    @user.preferredendtime = @user.preferredendtime.in_time_zone(@user.timezone)
   end
 
   def edit
-    @user = User.find(params[:id]) #find the user we want to update
-    Time.zone = @user.timezone
-    binding.pry
-# not sure if this code is needed.
-
-    # @user.preferredstarttime = Time.use_zone(Time.zone){Time.zone.parse(@user.preferredstarttime).in_time_zone(Time.zone)}
-    # @user.preferredendtime = Time.use_zone(Time.zone){Time.zone.parse(@user.preferredendtime).in_time_zone(Time.zone)}
-
+    @user = User.find(params[:id])
+    @user.preferredstarttime = @user.preferredstarttime.in_time_zone(@user.timezone)
+    @user.preferredendtime = @user.preferredendtime.in_time_zone(@user.timezone)
   end
 
   def update

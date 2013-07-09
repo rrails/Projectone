@@ -19,8 +19,8 @@
   <% User.order(:user).each do |user| %>
     <span><%= user.name %></span>
     <span><%= user.location %></span>
-    <span><%= user.preferredstarttime.strftime('%H:%M') %></span>
-    <span><%= user.preferredendtime.strftime('%H:%M') %></span>
+    <span><%= user.preferredstarttime.strftime('%H:%M') %></span> -->
+    <span><%= user.preferredendtime.strftime('%H:%M') %></span> --> -->
 
     <%= check_box_tag 'call[user_ids][]', user.id, user.in?(@call.users) %>
     <br>

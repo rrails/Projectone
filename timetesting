@@ -1,0 +1,19 @@
+Add a user with 08.00 and 09.00
+check the times in database 6 and 7
+check the times when displayed on screen 7 and 8
+
+--------------------
+what should it say user - test1 abc
+
+When captures 08:00   09:00 - this is in the create code
+
+in the database 06:00 07:00 - yes
+
+
+summary screen showing 06:00 07:00 - not correct
+on the screen 08:00   09:00  - this went through edit. it is showing 07.00 and 08.00
+
+updated the database by entering 8.00 and 9.00 - this is going through update and now database showing 8.00 and 9.00
+
+
+

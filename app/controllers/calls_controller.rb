@@ -5,13 +5,14 @@ class CallsController < ApplicationController
 
   def new
     @call = Call.new
+    binding.pry
   end
 
   def create
     call = Call.create(params[:call])
     binding.pry
-    # how do I get the call owner's timezone?
-    Time.zone = params[:call.owner][:timezone] #need to know how to get the owners timezone
+    # how do I get the call organiser's timezone?
+    Time.zone = params[:call.organiser][:timezone] #need to know how to get the organisers timezone
     call.time = Time.use_zone(Time.zone) {Time.zone.parse(params[:call][:time]).in_time_zone(Time.zone)}
     call.save
     # call.attendees.each do |attendee|

@@ -1,7 +1,7 @@
 Meeting::Application.routes.draw do
   root :to => 'home#index'
 
-  resources :calls, :attendees
+  resources :calls
   resources :users, :except => [:edit] do
     collection do
       get 'edit'

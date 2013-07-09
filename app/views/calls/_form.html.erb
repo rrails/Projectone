@@ -6,8 +6,8 @@
   <%= f.label :description %>
   <%= f.text_field :description %>
   <br>
-  <%= f.label :owner %>
-  <%= f.text_field :owner %>
+  <%= f.label :organiser %>
+  <%= f.text_field :organiser %>
   <br>
   <%= f.label :date %>
   <%= f.text_field :date %>
@@ -19,6 +19,7 @@
   <% User.order(:user).each do |user| %>
     <span><%= user.name %></span>
     <span><%= user.location %></span>
+    <!-- convert time to organisers timezone -->
     <span><%= user.preferredstarttime.strftime('%H:%M') %></span> -->
     <span><%= user.preferredendtime.strftime('%H:%M') %></span> --> -->
 

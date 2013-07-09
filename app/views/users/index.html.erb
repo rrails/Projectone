@@ -7,9 +7,9 @@
       <td><%= user.location %></td>
       <td><%= user.preferredstarttime.strftime('%H:%M') %></td>
       <td><%= user.preferredendtime.strftime('%H:%M') %></td>
-    <td><%=  link_to 'Edit', edit_user_path(user)%></td>
+      <td><%=  link_to 'Edit', edit_user_path(user)%></td>
 <!-- This deletes the record without showing the data -->
-<td><%= link_to 'delete', user, :method => :delete %></td>
+      <td><%= link_to 'delete', user, :method => :delete %></td>
     </tr>
 
   <% end %>

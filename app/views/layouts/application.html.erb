@@ -23,19 +23,18 @@
 
     <div class="row">
       <div class="twelve columns">
-        <h1><img src="http://placehold.it/400x100&text=Logo" /></h1>
+        <h1 class='logo'>Meeting Point</h1>
       </div>
     </div>
     <div class="row">
       <div class="twelve columns">
         <div class="row">
           <div class="seven columns">
-            <ul.right class="nav-bar right">
+            <ul.right class="nav right">
               <% if @auth.present? %>
                 <li><%= link_to 'Edit User', edit_users_path%></li>
                 <li><%= link_to 'Create Call', new_call_path%></li>
                 <li><%= link_to 'Calls', calls_path%></li>
-                <li><%= link_to 'Attendees', attendees_path%></li>
                 <!-- <li>#{link_to 'Attendees', attendees_path%></li> -->
                 <li><%= link_to('logout '+ @auth.name, login_path, :method => :delete,:confirm => 'Really?')%></li>
               <% else %>

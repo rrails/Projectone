@@ -56,4 +56,10 @@ class UsersController < ApplicationController
     redirect_to(users_path)
   end
 
+  def meets
+    @user = User.find(params[:id])
+    binding.pry
+
+  end
+
 end

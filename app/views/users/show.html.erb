@@ -1,16 +1,13 @@
-<h3> <%= @user.name %></h3>
-show
-<% @user.calls.each do |t| %>
-  <section>
-    <span><%= t.subject %></span>
-    <span><%= t.description %></span>
-    <span><%= t.date %></span>
-    <span><%= t.time %></span>
-    <!-- this goes to a form to show the edit fields -->
-<%=  link_to 'Edit', edit_users_path(@user)%>
-<!-- This deletes the record without showing the data -->
-<%= link_to 'delete', @user, :method => :delete %>
-
-    <hr>
-  </section>
-<% end %>
+<h2> My Meetings </h2>
+<div class = 'detail'>
+  <table>
+  <% @user.calls.each do |t| %>
+    <tr class='item'>
+    <td><%= t.date.strftime('%d:%m:%Y') %></td>
+    <td><%= t.subject %></td>
+    <td><%= t.description %></td>
+    <td><%= t.organiser %></td>
+    <td><%= t.time.strftime('%H:%M:%S') %></td>
+    </tr>
+  <% end %>
+</div>

@@ -5,6 +5,7 @@ class CallsController < ApplicationController
 
   def new
     @call = Call.new
+    @call.organiser = @auth.name
     @users = User.order(:user).all
     @users.each do |user|
       user.lstarttime = user.preferredstarttime.in_time_zone(@auth.timezone)
@@ -14,13 +15,11 @@ class CallsController < ApplicationController
 
   def create
     call = Call.create(params[:call])
-    # how do I get the call organiser's timezone?
-    Time.zone = @auth.timezone #need to know how to get the organisers timezone
+    Time.zone = @auth.timezone
     call.time = Time.use_zone(Time.zone) {Time.zone.parse(params[:call][:time]).in_time_zone(Time.zone)}
     call.time = Time.use_zone(Time.zone) {Time.zone.parse(params[:call][:time]).in_time_zone(Time.zone)}
 
     call.attendees.each do |attendee|
-      # need to store the meeting date and time in UTC
       attendee.meetingdate = call.date
       attendee.accepted = FALSE # add this to database level
       attendee.save

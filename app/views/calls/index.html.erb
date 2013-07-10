@@ -1,8 +1,8 @@
 <div class = 'detail'>
   <% @calls.each do |call| %>
     <ul class='item'>
-      <li>Date <%= call.date %></li>
-      <li>Time <%= call.time %></li>
+      <li>Date <%= call.date.strftime('%d:%m:%Y') %></li>
+      <li>Time <%= call.time.strftime('%H:%M') %></li>
       <li>organiser <%= call.organiser %></li>
       <li>Subject <%= call.subject %></li>
       <li>Description <%= call.description %></li>

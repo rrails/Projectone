@@ -22,3 +22,11 @@ a:hover{
   border: 1px solid green;
   margin: 20px;
 }
+
+.logo {
+  width: 400px;
+  height: 100px;
+  margin: auto;
+  font-size: 60px;
+  }
+

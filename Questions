@@ -1,7 +1,10 @@
 Questions
 
+After user logs in successfull you want them to see their planned meetings.
+after user captures a meeting - what should they see?
+after updating user - where should we go?
+
 User show
-  - need to convert from UTC to user timezone before displaying the time. Needs to go in the form.
   - default start timezone to 00.00
   - default end timezone to 23:59
   - ensure start time is before end time
@@ -10,26 +13,16 @@ User show
   - once a user captures data - need to say captured?
 
 
-adding calls
-  - get timezone from organisers profile
-  - take owners timezone to store meeting time in UTC on database
-  - display start time and end time from UTC to owners timezone
-  - convert meeting time from UTC to owners timezone for display
+Users
+  - Individual User details
+    - they can edit and delete
+    - they can see their meetings
+    - when logging on see your meetings
 
-Attendees
-  - we need to gir routing
-  - create our own routing
-
-Inquiry screen
-
-
-  Screens
-
-  Home screen
-    logo - Meeting Planner
-    then go to applicationhtml.erb file
-    add
-
+Calls
+  - Create calls
+  - edit calls
+  - see all calls
 
 security
 
@@ -75,7 +68,6 @@ Screen 1
         delete
 
 -------
-  how do I create attendees in the seed file?
   Associations
   - used save in calls database. need to fix this later.
 

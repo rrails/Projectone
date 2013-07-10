@@ -3,9 +3,13 @@
   <%= f.label :subject %>
   <%= f.text_field :subject %>
   <br>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+  <%= f.label :calldetail %>
+  <%= f.text_field :calldetail %>
   <br>
+   <%= f.label :attachment %>
+   <%= f.text_field :attachment %>
+  <br>
+
   <%= f.label :organiser %>
   <%= f.text_field :organiser %>
   <br>
@@ -16,13 +20,11 @@
    <%= f.text_field :time %>
   <br>
   <br>
-  <% User.order(:user).each do |user| %>
+  <% @users.each do |user| %>
     <span><%= user.name %></span>
     <span><%= user.location %></span>
-    <!-- convert time to organisers timezone -->
-    <span><%= user.preferredstarttime.strftime('%H:%M') %></span> -->
-    <span><%= user.preferredendtime.strftime('%H:%M') %></span> --> -->
-
+    <span><%= user.preferredstarttime.strftime('%H:%M') %></span>
+    <span><%= user.preferredendtime.strftime('%H:%M') %></span>
     <%= check_box_tag 'call[user_ids][]', user.id, user.in?(@call.users) %>
     <br>
     <% end %>

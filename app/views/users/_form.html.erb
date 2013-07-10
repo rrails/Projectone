@@ -8,32 +8,54 @@
   </div>
   <% end %>
 
-<%= form_for @user do |f| %>
-
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <br>
-  <%= f.label :password_confirmation%>
-  <%= f.password_field :password_confirmation %>
-  <br>
-  <%= f.label :timezone %>
-  <%= f.time_zone_select :timezone %>
-  <br>
-  <%= f.label :location %>
-  <%= f.text_field :location %>
-  <br>
-  <%= f.label :preferredstarttime %>
-  <%= f.text_field :preferredstarttime %>
-  <br>
-  <%= f.label :preferredendtime %>
-  <%= f.text_field :preferredendtime %>
-  <br>
-  <%= f.label :emailaddress %>
-  <%= f.text_field :email %>
-  <br>
+  <!-- <form> -->
+    <!-- <fieldset> -->
+      <legend>Fieldset</legend>
+        <%= form_for @user do |f| %>
+          <div class="row">
+            <div class="large-6 columns">
+              <%= f.label :name %>
+              <%= f.text_field :name %>
+            </div>
+          </div>
+        <div class="row">
+          <div class="large-4 columns">
+              <%= f.label :password %>
+              <%= f.password_field :password %>
+          </div>
+          <div class="large-4 columns">
+            <%= f.label :password_confirmation%>
+            <%= f.password_field :password_confirmation %>
+          </div>
+          <div class="large-4 columns">
+              <%= f.label :location %>
+              <%= f.text_field :location %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-4 columns">
+            <%= f.label :timezone %>
+            <%= f.time_zone_select :timezone %>
+          </div>
+          <div class="large-4 columns">
+            <%= f.label :preferredstarttime %>
+            <%= f.text_field :preferredstarttime %>
+          </div>
+          <div class="large-4 columns">
+            <%= f.label :preferredendtime %>
+            <%= f.text_field :preferredendtime %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-4 columns">
+            <%= f.label :email %>
+            <%= f.text_field :email %>
+          </div>
+        </div>
+        <div class="small-3 columns"></div>
+        <!-- <span>  f.submit %> </span> -->
   <%= f.submit %>
 
+
 <% end %>
+

@@ -16,6 +16,7 @@
 
 class User < ActiveRecord::Base
   attr_accessible :name, :location, :preferredstarttime, :preferredendtime, :timezone,:password, :password_confirmation, :email
+  attr_accessor :lstarttime, :lendtime
   has_secure_password
   has_many :attendees
   has_many :calls, :through => :attendees

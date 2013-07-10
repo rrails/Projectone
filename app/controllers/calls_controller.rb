@@ -5,12 +5,10 @@ class CallsController < ApplicationController
 
   def new
     @call = Call.new
-    @users = User.order(:user)
-    @users.each do |user| %>
-      <!-- convert time to organisers timezone -->
-      user.preferredstarttime = user.preferredstarttime.in_time_zone(@auth.timezone)
-      user.preferredendtime = user.preferredendtime.in_time_zone(@auth.timezone)
-      binding.pry
+    @users = User.order(:user).all
+    @users.each do |user|
+      user.lstarttime = user.preferredstarttime.in_time_zone(@auth.timezone)
+      user.lendtime = user.preferredendtime.in_time_zone(@auth.timezone)
     end
   end
 
@@ -18,18 +16,21 @@ class CallsController < ApplicationController
     call = Call.create(params[:call])
     # how do I get the call organiser's timezone?
     Time.zone = @auth.timezone #need to know how to get the organisers timezone
-
     call.time = Time.use_zone(Time.zone) {Time.zone.parse(params[:call][:time]).in_time_zone(Time.zone)}
+    call.time = Time.use_zone(Time.zone) {Time.zone.parse(params[:call][:time]).in_time_zone(Time.zone)}
+      if call.save
+        redirect_to(root_path)
+      else
+        render :new
+      end
 
     binding.pry
-    call.save
     # call.attendees.each do |attendee|
       # need to store the meeting date and time in UTC
       # attendee.meetingdate = call.date
       # attendee.accepted = FALSE # add this to database level
       # attendee.save
     # end
-    redirect_to(call)
   end
 
   def show

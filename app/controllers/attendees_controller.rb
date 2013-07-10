@@ -9,17 +9,19 @@ class AttendeesController < ApplicationController
   end
 
   def create
-    binding.pry
     attendee = Attendee.create(params[:attendee])
     redirect_to(attendee)
   end
 
   def show
     @attendee = Attendee.find(params[:id])
+    binding.pry
   end
 
   def edit
     @attendee = Attendee.find(params[:id]) #find the attendee we want to update
+    binding.pry
+
   end
 
   def update

@@ -1,11 +1,11 @@
 <div class = 'detail'>
   <% @calls.each do |call| %>
     <ul class='item'>
+      <li>Date <%= call.date %></li>
+      <li>Time <%= call.time %></li>
       <li>organiser <%= call.organiser %></li>
       <li>Subject <%= call.subject %></li>
       <li>Description <%= call.description %></li>
-      <li>Date <%= call.date %></li>
-      <li>Time <%= call.time %></li>
     </ul>
     <!-- this goes to a form to show the edit fields -->
 <%=  link_to 'Edit', edit_call_path(call)%>

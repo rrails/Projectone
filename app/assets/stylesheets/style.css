@@ -3,10 +3,11 @@
   margin: auto;
 }
 
-nav ul li{
+nav li{
 display: inline;
 list-style: none;
 }
+
 nav ul {
   margin-left: none;
   text-align: right;
@@ -14,4 +15,10 @@ nav ul {
 
 a:hover{
   text-decoration: underline;
+}
+
+.detail li{
+  display: inline;
+  border: 1px solid green;
+  margin: 20px;
 }

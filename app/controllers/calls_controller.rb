@@ -18,19 +18,18 @@ class CallsController < ApplicationController
     Time.zone = @auth.timezone #need to know how to get the organisers timezone
     call.time = Time.use_zone(Time.zone) {Time.zone.parse(params[:call][:time]).in_time_zone(Time.zone)}
     call.time = Time.use_zone(Time.zone) {Time.zone.parse(params[:call][:time]).in_time_zone(Time.zone)}
-      if call.save
-        redirect_to(root_path)
-      else
-        render :new
-      end
 
-    binding.pry
-    # call.attendees.each do |attendee|
+    call.attendees.each do |attendee|
       # need to store the meeting date and time in UTC
-      # attendee.meetingdate = call.date
-      # attendee.accepted = FALSE # add this to database level
-      # attendee.save
-    # end
+      attendee.meetingdate = call.date
+      attendee.accepted = FALSE # add this to database level
+      attendee.save
+    end
+    if call.save
+      redirect_to(root_path)
+    else
+      render :new
+    end
   end
 
   def show
@@ -39,10 +38,24 @@ class CallsController < ApplicationController
 
   def edit
     @call = Call.find(params[:id]) #find the call we want to update
+    @users = User.order(:user).all
+    @users.each do |user|
+      user.lstarttime = user.preferredstarttime.in_time_zone(@auth.timezone)
+      user.lendtime = user.preferredendtime.in_time_zone(@auth.timezone)
+    end
   end
 
   def update
     call = Call.find(params[:id]) #find the call we want to update
+    Time.zone = @auth.timezone #need to know how to get the organisers timezone
+    call.time = Time.use_zone(Time.zone) {Time.zone.parse(params[:call][:time]).in_time_zone(Time.zone)}
+    call.time = Time.use_zone(Time.zone) {Time.zone.parse(params[:call][:time]).in_time_zone(Time.zone)}
+    call.attendees.each do |attendee|
+      # need to store the meeting date and time in UTC
+      attendee.meetingdate = call.date
+      attendee.accepted = FALSE # add this to database level
+      attendee.save
+    end
     call.update_attributes(params[:call])
     redirect_to(call)
   end

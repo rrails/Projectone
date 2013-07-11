@@ -9,9 +9,11 @@ User show
   - default end timezone to 23:59
   - ensure start time is before end time
   - validate the city
-  - when user see the his meetings the meeting time should be in his timezone
   - once a user captures data - need to say captured?
 
+questions for danny
+- where can I put a path for showing my meetings
+- how can I link that to after logon
 
 Users
   - Individual User details
@@ -24,11 +26,8 @@ Calls
   - edit calls
   - see all calls
 
-security
-
 
 Database changes
-- update attendee table to set boolean to false
 - update user table where the preferred st and end time are required or defaulted to a certain value
 - add meeting time to attende table
 

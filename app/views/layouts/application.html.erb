@@ -35,7 +35,7 @@
                 <li><%= link_to 'Edit User', edit_users_path%></li>
                 <li><%= link_to 'Create Call', new_call_path%></li>
                 <li><%= link_to 'Calls', calls_path%></li>
-                <!-- <li>#{link_to 'Attendees', attendees_path%></li> -->
+<!-- need to link to users to be able to see their own meetings -->
                 <li><%= link_to('logout '+ @auth.name, login_path, :method => :delete,:confirm => 'Really?')%></li>
               <% else %>
                 <li><%= link_to('Create Account',new_user_path)%></li>
@@ -47,8 +47,18 @@
       </div>
     </div>
 
+    <% if flash[:notice].present? %>
+      <div class='row'>
+        <div class='columns small-5 alert-box alert'>
+          <%= flash[:notice] %>
+        </div>
+    <% end %>
 
-    <%= yield %>
+    <div class="row">
+      <div class="twelve columns main-content">
+        <%= yield %>
+      </div>
+    </div>
 
 
     <%= javascript_include_tag "application" %>

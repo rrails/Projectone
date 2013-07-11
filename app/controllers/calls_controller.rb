@@ -2,7 +2,7 @@ class CallsController < ApplicationController
   def index
     @calls = Call.order(:date).all
     @calls.each do |call|
-      call.lmeettime = call.time.in_time_zone(@auth.timezone)
+      call.lmeettime = call.time.in_time_zone(@auth.timezone) #convert time to users's timezone
     end
   end
 
@@ -11,7 +11,7 @@ class CallsController < ApplicationController
     @call.organiser = @auth.name
     @users = User.order(:user).all
     @users.each do |user|
-      user.lstarttime = user.preferredstarttime.in_time_zone(@auth.timezone)
+      user.lstarttime = user.preferredstarttime.in_time_zone(@auth.timezone) #store in time in local variables
       user.lendtime = user.preferredendtime.in_time_zone(@auth.timezone)
     end
   end
@@ -48,7 +48,8 @@ class CallsController < ApplicationController
   def update
     @call = Call.find(params[:id]) #find the call we want to update
       if @auth.name == @call.organiser
-        Time.zone = @auth.timezone #need to know how to get the organisers timezone
+        Time.zone = @auth.timezone #convert time to organiser timezone
+        # Trust me this works
         @call.time = Time.use_zone(Time.zone) {Time.zone.parse(params[:call][:meet_time]).in_time_zone(Time.zone)}
         @call.attendees.each do |attendee|
           attendee.meetingdate = @call.date

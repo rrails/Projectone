@@ -1,13 +1,23 @@
-<h2> My Meetings </h2>
-<div class = 'detail'>
-  <table>
-  <% @user.calls.each do |t| %>
-    <tr class='item'>
-    <td><%= t.date.strftime('%d:%m:%Y') %></td>
-    <td><%= t.subject %></td>
-    <td><%= t.description %></td>
-    <td><%= t.organiser %></td>
-    <td><%= t.time.strftime('%H:%M:%S') %></td>
-    </tr>
-  <% end %>
-</div>
+<h2> My Calls </h2>
+<% if @user.calls.empty? %>
+
+<% else %>
+  <div class = 'detail'>
+    <table border="1">
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Organiser</th>
+        <th>Subject</th>
+      </tr>
+      <% @user.calls.each do |t| %>
+        <tr>
+          <td><%= t.date.strftime('%d:%m:%Y') %></td>
+          <td><%= t.time.strftime('%H:%M') %></td>
+          <td><%= t.organiser %></td>
+          <td><%= t.subject %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>

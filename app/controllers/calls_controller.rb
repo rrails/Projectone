@@ -14,10 +14,9 @@ class CallsController < ApplicationController
   end
 
   def create
-    call = Call.create(params[:call])
+    call = Call.new(params[:call])
     Time.zone = @auth.timezone
-    call.time = Time.use_zone(Time.zone) {Time.zone.parse(params[:call][:time]).in_time_zone(Time.zone)}
-    call.time = Time.use_zone(Time.zone) {Time.zone.parse(params[:call][:time]).in_time_zone(Time.zone)}
+    call.time = Time.use_zone(Time.zone) {Time.zone.parse(params[:call][:meet_time]).in_time_zone(Time.zone)}
 
     call.attendees.each do |attendee|
       attendee.meetingdate = call.date
@@ -25,7 +24,7 @@ class CallsController < ApplicationController
       attendee.save
     end
     if call.save
-      redirect_to(root_path)
+      redirect_to(call)
     else
       render :new
     end
@@ -44,19 +43,24 @@ class CallsController < ApplicationController
     end
   end
 
+
   def update
     call = Call.find(params[:id]) #find the call we want to update
-    Time.zone = @auth.timezone #need to know how to get the organisers timezone
-    call.time = Time.use_zone(Time.zone) {Time.zone.parse(params[:call][:time]).in_time_zone(Time.zone)}
-    call.time = Time.use_zone(Time.zone) {Time.zone.parse(params[:call][:time]).in_time_zone(Time.zone)}
-    call.attendees.each do |attendee|
-      # need to store the meeting date and time in UTC
-      attendee.meetingdate = call.date
-      attendee.accepted = FALSE # add this to database level
-      attendee.save
+      if @auth.name == call.organiser
+        Time.zone = @auth.timezone #need to know how to get the organisers timezone
+        call.time = Time.use_zone(Time.zone) {Time.zone.parse(params[:call][:meet_time]).in_time_zone(Time.zone)}
+        call.attendees.each do |attendee|
+            # need to store the meeting date and time in UTC
+          attendee.meetingdate = call.date
+          attendee.accepted = FALSE # add this to database level
+          attendee.save
+        end
+        call.update_attributes(params[:call])
+        redirect_to(call)
+    else
+      flash[:notice] = "Only organisers of the call can edit the call details."
+      redirect_to(calls_path)
     end
-    call.update_attributes(params[:call])
-    redirect_to(call)
   end
 
   def destroy

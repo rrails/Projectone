@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   def pref_start
     if preferredstarttime
-      preferredstarttime.strftime('%H:%M:%S')
+      preferredstarttime.strftime('%H:%M')
     else
       ''
     end
@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
 
   def pref_end
     if preferredendtime
-      preferredendtime.strftime('%H:%M:%S')
+      preferredendtime.strftime('%H:%M')
     else
       ''
     end

@@ -1,35 +1,24 @@
 Questions
+2. Where to put the user name?
+3. In the call form - we need an enter button
+4. Fix the show after capturing a call
 
-After user logs in successfull you want them to see their planned meetings.
+Only the organiser should be able to update the meetings
+
+  where should I do this?
+
+
 after user captures a meeting - what should they see?
 after updating user - where should we go?
 
 User show
-  - default start timezone to 00.00
-  - default end timezone to 23:59
   - ensure start time is before end time
-  - validate the city
-  - once a user captures data - need to say captured?
-
-questions for danny
-- where can I put a path for showing my meetings
-- how can I link to meetings page after logon
-- where can I put
-
-              <% if !f.object.empty? %>
-               <%= :value => f.object.preferredstarttime.strftime('%H:%M:%S') %>
-               <% end %>
 
 Users
   - Individual User details
     - they can edit and delete
     - they can see their meetings
     - when logging on see your meetings
-
-Calls
-  - Create calls
-  - edit calls
-  - see all calls
 
 
 Database changes

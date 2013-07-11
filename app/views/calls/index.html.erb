@@ -1,23 +1,29 @@
 <div class = 'detail'>
-  <br>
-  <table border="1">
-    <tr>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Organiser</th>
-      <th>Subject</th>
-      <th>Description</th>
-      <th>Ammend</th>
-    </tr>
-    <% Call.order(:date).each do |call| %>
-      <tr>
-        <td><%= call.date.strftime('%d:%m:%Y') %></td>
-        <td><%= call.time.strftime('%H:%M') %></td>
-        <td><%= call.organiser %></td>
-        <td><%= call.subject %></td>
-        <td><%= call.description %></td>
-        <td><%=  link_to 'Edit', edit_call_path(call)%><%= link_to 'Delete', call, :method => :delete %></td>
-      </tr>
+  <h2>Scheduled Calls</h2>
+    <% if Call.all.empty? %>
+
+    <% else %>
+      <table border="1">
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Organiser</th>
+          <th>Subject</th>
+          <th>Description</th>
+          <th>Amend</th>
+        </tr>
+        <% Call.order(:date).each do |call| %>
+          <tr>
+            <td><%= call.date.strftime('%d:%m:%Y') %></td>
+            <td><%= call.time.strftime('%H:%M') %></td>
+            <td><%= call.organiser %></td>
+            <td><%= call.subject %></td>
+            <td><%= call.description %></td>
+            <% if call.organiser == @auth.name %>
+             <td><%=  link_to 'Edit', edit_call_path(call)%><%= link_to 'Delete', call, :method => :delete %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
     <% end %>
-  </table>
 </div>

@@ -7,7 +7,6 @@
     </ul>
   </div>
   <% end %>
-
         <%= form_for @user do |f| %>
           <div class="row">
             <div class="large-6 columns">
@@ -15,49 +14,48 @@
           </div>
 
           <div class="row">
-          <div class="large-4 columns">
+          <div class="large-12 columns">
               <%= f.label :name %>
               <%= f.text_field :name %>
             </div>
           </div>
 
           <div class="row">
-          <div class="large-4 columns">
+          <div class="large-12 columns">
               <%= f.label :password %>
               <%= f.password_field :password %>
           </div>
-          <div class="large-4 columns">
+          <div class="large-12 columns">
             <%= f.label :password_confirmation, 'Password Confirmation' %>
             <%= f.password_field :password_confirmation %>
           </div>
-          <div class="large-4 columns">
+          <div class="large-12 columns">
               <%= f.label :location %>
               <%= f.text_field :location %>
           </div>
         </div>
         <div class="row">
-          <div class="large-4 columns">
+          <div class="large-12 columns">
             <%= f.label :timezone %>
             <%= f.time_zone_select :timezone %>
           </div>
-          <div class="large-4 columns">
+          <div class="large-12 columns">
             <%= f.label :preferredstarttime, 'Preferred Start Time' %>
             <%= f.text_field :pref_start %>
           </div>
-          <div class="large-4 columns">
+          <div class="large-12 columns">
             <%= f.label :preferredendtime, 'Preferred End Time' %>
             <%= f.text_field :pref_end %>
           </div>
         </div>
         <div class="row">
-          <div class="large-4 columns">
+          <div class="large-12 columns">
             <%= f.label :email %>
             <%= f.text_field :email %>
           </div>
         </div>
         <div class="small-3 columns"></div>
-  <%= f.submit'yes', :class => "" %>
+  <%= f.submit'Submit', :class => "small button" %>
 
 
 <% end %>
-

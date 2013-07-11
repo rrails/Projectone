@@ -9,7 +9,6 @@
    <%= f.label :attachment %>
    <%= f.text_field :attachment %>
   <br>
-
   <%= f.label :organiser %>
   <%= f.text_field :organiser %>
   <br>
@@ -17,17 +16,24 @@
   <%= f.text_field :date %>
   <br>
    <%= f.label :time %>
-   <%= f.text_field :time %>
+   <%= f.text_field :meet_time %>
   <br>
   <br>
-  <% @users.each do |user| %>
-    <span><%= user.name %></span>
-    <span><%= user.location %></span>
-    <span><%= user.lstarttime.strftime('%H:%M') %></span>
-    <span><%= user.lendtime.strftime('%H:%M') %></span>
-    <%= check_box_tag 'call[user_ids][]', user.id, user.in?(@call.users) %>
-    <br>
+  <table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Location</th>
+    <th>Availability</th>
+    <th>Required</th>
+  </tr>
+    <tr>
+      <% @users.each do |user| %>
+      <td><%= user.name %></td>
+      <td><%= user.location %></td>
+      <td><%= user.lstarttime.strftime('%H:%M') %> - <%= user.lendtime.strftime('%H:%M') %></td>
+      <td class="checker"><%= check_box_tag 'call[user_ids][]', user.id, user.in?(@call.users) %></td>
+    </tr>
     <% end %>
-  <%= f.submit %>
-
+  </table>
+<%= f.submit'Submit', :class => "small button" %>
 <% end %>

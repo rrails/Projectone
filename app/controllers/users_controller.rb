@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @user.preferredstarttime = Time.use_zone(Time.zone) {Time.zone.parse(params[:user][:pref_start]).in_time_zone(Time.zone)}
     @user.preferredendtime = Time.use_zone(Time.zone) {Time.zone.parse(params[:user][:pref_end]).in_time_zone(Time.zone)}
       if @user.save
+        session[:user_id] = @user.id
         redirect_to(root_path)
       else
         render :new
@@ -60,5 +61,8 @@ class UsersController < ApplicationController
     binding.pry
 
   end
+
+  # private
+  # def timething
 
 end

@@ -15,7 +15,20 @@
 #
 
 class Call < ActiveRecord::Base
-  attr_accessible :subject, :description, :organiser, :date,:time, :attendee_ids, :user_ids, :calldetail, :attachment
+  attr_accessible :subject, :description, :organiser, :date,:time, :attendee_ids,
+                  :user_ids, :calldetail, :attachment, :meet_time
   has_many :attendees
   has_many :users, :through => :attendees
+
+  def meet_time
+    if time
+      time.strftime('%H:%M')
+    else
+      ''
+    end
+  end
+
+  def meet_time=(mtime)
+      self.time = mtime
+  end
 end

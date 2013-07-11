@@ -33,11 +33,10 @@
             <ul.right class="nav right">
               <% if @auth.present? %>
                 <li><%= link_to 'Edit User', edit_users_path%></li>
-                <li><%= link_to 'My meetings', user_path(@auth) %></li>
+                <li><%= link_to 'My Calls', user_path(@auth) %></li>
                 <li><%= link_to 'Create Call', new_call_path%></li>
                 <li><%= link_to 'Calls', calls_path%></li>
-<!-- need to link to users to be able to see their own meetings -->
-                <li><%= link_to('logout '+ @auth.name, login_path, :method => :delete,:confirm => 'Really?')%></li>
+                <li><%= link_to('Logout '+ @auth.name, login_path, :method => :delete,:confirm => 'Really?')%></li>
               <% else %>
                 <li><%= link_to('Create Account',new_user_path)%></li>
                 <li><%= link_to('Login',login_path)%></li>

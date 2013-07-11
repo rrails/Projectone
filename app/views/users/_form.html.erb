@@ -40,11 +40,12 @@
     </div>
     <div class="large-12 columns">
       <%= f.label :preferredstarttime, 'Preferred Start Time' %>
-      <%= f.text_field :pref_start %>
+      <%= f.text_field :pref_start, :value => @user.lstarttime ? (@user.lstarttime.strftime('%H:%M')) : '',:required => true%>
     </div>
+
     <div class="large-12 columns">
       <%= f.label :preferredendtime, 'Preferred End Time' %>
-      <%= f.text_field :pref_end %>
+      <%= f.text_field :pref_end, :value => @user.lendtime ? (@user.lendtime.strftime('%H:%M')) : '',:required => true%>
     </div>
   </div>
   <div class="row">

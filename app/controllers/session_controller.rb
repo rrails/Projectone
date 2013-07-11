@@ -11,7 +11,6 @@ class SessionController < ApplicationController
       flash[:notice] = "Incorrect login. Please try again."
       redirect_to(login_path)
     end
-      session[:user_id] = user.id
   end
 
   def destroy

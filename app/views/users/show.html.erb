@@ -13,7 +13,7 @@
       <% @user.calls.each do |t| %>
         <tr>
           <td><%= t.date.strftime('%d:%m:%Y') %></td>
-          <td><%= t.time.strftime('%H:%M') %></td>
+          <td><%= t.lmeettime.strftime('%H:%M') %></td>
           <td><%= t.organiser %></td>
           <td><%= t.subject %></td>
         </tr>

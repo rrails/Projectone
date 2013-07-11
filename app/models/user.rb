@@ -25,11 +25,7 @@ class User < ActiveRecord::Base
   # validate :datevalidation
 
   def pref_start
-    if preferredstarttime
-      preferredstarttime.strftime('%H:%M')
-    else
-      ''
-    end
+
   end
 
   def pref_start=(start_time)
@@ -37,11 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def pref_end
-    if preferredendtime
-      preferredendtime.strftime('%H:%M')
-    else
-      ''
-    end
+
   end
 
   def pref_end=(end_time)

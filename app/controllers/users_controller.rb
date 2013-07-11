@@ -8,40 +8,39 @@ class UsersController < ApplicationController
   end
 
   def create
-    # saving to db
-    @user = User.new(params[:user])
+    @user = User.create(params[:user])
     Time.zone = params[:user][:timezone]
     @user.preferredstarttime = Time.use_zone(Time.zone) {Time.zone.parse(params[:user][:pref_start]).in_time_zone(Time.zone)}
     @user.preferredendtime = Time.use_zone(Time.zone) {Time.zone.parse(params[:user][:pref_end]).in_time_zone(Time.zone)}
-      if @user.save
-        session[:user_id] = @user.id
-        redirect_to(root_path)
-      else
-        render :new
-      end
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to(root_path)
+    else
+      render :new
+    end
   end
 
   def show
     @user = User.find(params[:id])
-    @user.preferredstarttime = @user.preferredstarttime.in_time_zone(@user.timezone)
-    @user.preferredendtime = @user.preferredendtime.in_time_zone(@user.timezone)
+    # For all the calls convert the time.
+    @user.calls.each do |call|
+      call.lmeettime = call.time.in_time_zone(@auth.timezone)
+    end
   end
 
   def edit
     @user = @auth
-    @user.preferredstarttime = @user.preferredstarttime.in_time_zone(@user.timezone)
-    @user.preferredendtime = @user.preferredendtime.in_time_zone(@user.timezone)
+    @user.lstarttime =  @user.preferredstarttime.in_time_zone(@user.timezone)
+    @user.lendtime =  @user.preferredendtime.in_time_zone(@user.timezone)
     render :new
   end
 
   def update
     @user = @auth
-    # convert the time from user timezone to UTC
     Time.zone = params[:user][:timezone]
 
     @user.preferredstarttime = Time.use_zone(Time.zone) {Time.zone.parse(params[:user][:pref_start]).in_time_zone(Time.zone)}
     @user.preferredendtime = Time.use_zone(Time.zone) {Time.zone.parse(params[:user][:pref_end]).in_time_zone(Time.zone)}
-    @user.save
 
     if @user.update_attributes(params[:user])
       redirect_to(user_path(@user))
@@ -55,14 +54,5 @@ class UsersController < ApplicationController
     user.destroy
     redirect_to(users_path)
   end
-
-  def meets
-    @user = User.find(params[:id])
-    binding.pry
-
-  end
-
-  # private
-  # def timething
 
 end

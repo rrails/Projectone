@@ -1,4 +1,3 @@
-calls show
 <div class = 'detail'>
   <br>
   <table border="1">
@@ -7,14 +6,12 @@ calls show
       <th>Time</th>
       <th>Organiser</th>
       <th>Subject</th>
-      <th>Description</th>
     </tr>
       <tr>
         <td><%= @call.date.strftime('%d:%m:%Y') %></td>
         <td><%= @call.time.strftime('%H:%M') %></td>
         <td><%= @call.organiser %></td>
         <td><%= @call.subject %></td>
-        <td><%= @call.description %></td>
       </tr>
   </table>
 </div>

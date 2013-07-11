@@ -30,13 +30,16 @@
       <div class="twelve columns">
         <div class="row">
           <div class="seven columns">
+            <% if @auth.present? %>
+              <%= 'Welcome ' + @auth.name %>
+            <% end %>
             <ul.right class="nav right">
               <% if @auth.present? %>
                 <li><%= link_to 'Edit User', edit_users_path%></li>
                 <li><%= link_to 'My Calls', user_path(@auth) %></li>
                 <li><%= link_to 'Create Call', new_call_path%></li>
                 <li><%= link_to 'Calls', calls_path%></li>
-                <li><%= link_to('Logout '+ @auth.name, login_path, :method => :delete,:confirm => 'Really?')%></li>
+                <li><%= link_to('Logout ', login_path, :method => :delete,:confirm => 'Really?')%></li>
               <% else %>
                 <li><%= link_to('Create Account',new_user_path)%></li>
                 <li><%= link_to('Login',login_path)%></li>

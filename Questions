@@ -13,7 +13,12 @@ User show
 
 questions for danny
 - where can I put a path for showing my meetings
-- how can I link that to after logon
+- how can I link to meetings page after logon
+- where can I put
+
+              <% if !f.object.empty? %>
+               <%= :value => f.object.preferredstarttime.strftime('%H:%M:%S') %>
+               <% end %>
 
 Users
   - Individual User details

@@ -10,10 +10,9 @@ class UsersController < ApplicationController
   def create
     # saving to db
     @user = User.new(params[:user])
-    # Convert times from user timezone to UTC
     Time.zone = params[:user][:timezone]
-    @user.preferredstarttime = Time.use_zone(Time.zone) {Time.zone.parse(params[:user][:preferredstarttime]).in_time_zone(Time.zone)}
-    @user.preferredendtime = Time.use_zone(Time.zone) {Time.zone.parse(params[:user][:preferredendtime]).in_time_zone(Time.zone)}
+    @user.preferredstarttime = Time.use_zone(Time.zone) {Time.zone.parse(params[:user][:pref_start]).in_time_zone(Time.zone)}
+    @user.preferredendtime = Time.use_zone(Time.zone) {Time.zone.parse(params[:user][:pref_end]).in_time_zone(Time.zone)}
       if @user.save
         redirect_to(root_path)
       else
@@ -39,12 +38,12 @@ class UsersController < ApplicationController
     # convert the time from user timezone to UTC
     Time.zone = params[:user][:timezone]
 
-    @user.preferredstarttime = Time.use_zone(Time.zone) {Time.zone.parse(params[:user][:preferredstarttime]).in_time_zone(Time.zone)}
-    @user.preferredendtime = Time.use_zone(Time.zone) {Time.zone.parse(params[:user][:preferredendtime]).in_time_zone(Time.zone)}
+    @user.preferredstarttime = Time.use_zone(Time.zone) {Time.zone.parse(params[:user][:pref_start]).in_time_zone(Time.zone)}
+    @user.preferredendtime = Time.use_zone(Time.zone) {Time.zone.parse(params[:user][:pref_end]).in_time_zone(Time.zone)}
     @user.save
 
     if @user.update_attributes(params[:user])
-      redirect_to(users_path)
+      redirect_to(user_path(@user))
     else
       render :new
     end

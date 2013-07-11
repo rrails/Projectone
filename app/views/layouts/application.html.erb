@@ -33,6 +33,7 @@
             <ul.right class="nav right">
               <% if @auth.present? %>
                 <li><%= link_to 'Edit User', edit_users_path%></li>
+                <li><%= link_to 'My meetings', user_path(@auth) %></li>
                 <li><%= link_to 'Create Call', new_call_path%></li>
                 <li><%= link_to 'Calls', calls_path%></li>
 <!-- need to link to users to be able to see their own meetings -->

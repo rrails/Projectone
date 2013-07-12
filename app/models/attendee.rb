@@ -8,7 +8,7 @@
 #  meetingdate    :date
 #  dateinvited    :date
 #  dateofreminder :date
-#  accepted       :boolean
+#  accepted       :boolean          default(FALSE)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #

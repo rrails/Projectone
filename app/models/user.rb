@@ -17,12 +17,12 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :location, :preferredstarttime, :preferredendtime,
   :timezone,:password, :password_confirmation, :email, :pref_start, :pref_end
+
   attr_accessor :lstarttime, :lendtime
   has_secure_password
   has_many :attendees
   has_many :calls, :through => :attendees
   validates :name, :uniqueness => true, :length => {:minimum => 2}
-  # validate :datevalidation
 
   def pref_start
 
@@ -39,10 +39,5 @@ class User < ActiveRecord::Base
   def pref_end=(end_time)
     self.preferredendtime = end_time
   end
-
-  # def  datevalidation
-  #   prefe < end
-  #   errors.add 'sddsf'
-  # end
 
 end

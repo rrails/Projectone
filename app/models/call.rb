@@ -7,11 +7,11 @@
 #  description :string(255)
 #  organiser   :string(255)
 #  date        :date
-#  time        :time
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  calldetail  :string(255)
 #  attachment  :text
+#  time        :datetime
 #
 
 class Call < ActiveRecord::Base

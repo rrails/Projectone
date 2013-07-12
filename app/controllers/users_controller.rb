@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # For all the calls convert the time.
+    # For all the calls convert the time users time zone
     @user.calls.each do |call|
       call.lmeettime = call.time.in_time_zone(@auth.timezone)
     end

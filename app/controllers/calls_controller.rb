@@ -56,7 +56,7 @@ class CallsController < ApplicationController
           attendee.save
         end
         @call.update_attributes(params[:call])
-        redirect_to(call)
+        redirect_to(@call)
       else
         flash[:notice] = "Only organisers of the call can edit the call details."
         redirect_to(calls_path)

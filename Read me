@@ -1,0 +1,18 @@
+ Meeting Planner
+
+- The objective of this project is to enable users from different parts of the world - i.e. time zones, to schedule meetings/calls with others users at a time that is convenient to all attendees(participants) in the call.
+
+There are 3 models- calls, users and attendees.  Many users can be included in a call and a user can be in many calls.
+
+First - the user needs to create an account they sign in with - this includes their preferred time availability and in what time zone they are located
+
+A user has the following functionality once signed in:
+
+  - Create calls - where they see other user's available times in their local time zone. The users are listed in alphabetically order
+  - Edit and delete their user details - ie available times, location
+  - Ability to see all the calls they have been invited to: listed in date order
+  - The calls button shows all the cals created in the system. The user who organised the call can update/delete their own call details.
+
+This could be a tool to make the international call conferencing less taxing
+
+There are files and fields in the system that we have created for attendees that are for future use. I did not delete these files from the model.

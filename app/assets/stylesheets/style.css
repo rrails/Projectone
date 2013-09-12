@@ -5,11 +5,11 @@
   font-size: 60px;
   }
 
-li{
+/*li{
 display: inline;
 list-style: none;
 margin: 10px;
-}
+}*/
 
 ul {
   margin-left: none;
@@ -19,12 +19,8 @@ ul {
 a:hover{
   text-decoration: underline;
 }
-/*
-.main-content input {
-  width: 500px;
-}
-*/
- input[type="text"]{
+
+input[type="text"]{
   width: 400px;
 }
 
@@ -51,7 +47,11 @@ button-style: radius;
 }
 
 
-
+body {
+  padding-bottom: 65px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 
 

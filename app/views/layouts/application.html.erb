@@ -3,7 +3,8 @@
 <!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en"> <!--<![endif]-->
   <head>
   	<meta charset="utf-8" />
 
@@ -12,58 +13,61 @@
 
   	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <title>Emeeting</title>
 
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+
   </head>
 
-  <body>
+<body>
+  <div class="fixed">
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="/">Organise meeting across different timezones</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+      </ul>
 
-    <div class="row">
-      <div class="twelve columns">
-        <h1 class='logo'>Meeting Point</h1>
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <% if @auth.present?%>
+            <li class="divider"></li>
+            <li><%= link_to('Edit User', edit_users_path)%></li>
+            <li class="divider"></li>
+            <li><%= link_to "My Calls", user_path(@auth)%></li>
+            <li class="divider"></li>
+            <li><%= link_to "Create Call", new_call_path%></li>
+            <li class="divider"></li>
+            <li><%= link_to "Calls", calls_path%></li>
+            <li class="divider"></li>
+             <li><%= link_to('Logout ', login_path, :method => :delete,:confirm => 'Really?')%></li>
+          <%else%>
+            <li><%= link_to('Register',new_user_path)%></li>
+            <li><%= link_to('Login',login_path)%></li>
+          <%end%>
+        </ul>
+      </section>
+    </nav>
+  </div>
+
+  <% if flash[:notice].present? %>
+    <div class='row'>
+      <div class='small-5 columns alert-box alert'>
+        <%= flash[:notice] %>
       </div>
+  <% end %>
+
+  <div class="row">
+    <div class="large-12 columns main-content">
+      <%= yield %>
     </div>
-    <div class="row">
-      <div class="twelve columns">
-        <div class="row">
-          <div class="seven columns">
-            <% if @auth.present? %>
-              <%= 'Welcome ' + @auth.name %>
-            <% end %>
-            <ul.right class="nav right">
-              <% if @auth.present? %>
-                <li><%= link_to 'Edit User', edit_users_path%></li>
-                <li><%= link_to 'My Calls', user_path(@auth) %></li>
-                <li><%= link_to 'Create Call', new_call_path%></li>
-                <li><%= link_to 'Calls', calls_path%></li>
-                <li><%= link_to('Logout ', login_path, :method => :delete,:confirm => 'Really?')%></li>
-              <% else %>
-                <li><%= link_to('Create Account',new_user_path)%></li>
-                <li><%= link_to('Login',login_path)%></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <% if flash[:notice].present? %>
-      <div class='row'>
-        <div class='columns small-5 alert-box alert'>
-          <%= flash[:notice] %>
-        </div>
-    <% end %>
-
-    <div class="row">
-      <div class="twelve columns main-content">
-        <%= yield %>
-      </div>
-    </div>
+  </div>
 
 
-    <%= javascript_include_tag "application" %>
-  </body>
+</body>
 </html>

@@ -1,22 +1,16 @@
 <%= form_for @call do |f| %>
 
-  <%= f.label :subject %>
-  <%= f.text_field :subject %>
+  <%= f.text_field :subject, :class => 'subject',:label => false, :placeholder => "Subject" %>
   <br>
-  <%= f.label :calldetail, 'Call Reference' %>
-  <%= f.text_field :calldetail %>
+  <%= f.text_field :calldetail, :class => 'calldetail',:label => false, :placeholder => "Call Reference" %>
   <br>
-   <%= f.label :attachment %>
-   <%= f.text_field :attachment %>
+   <%= f.text_field :attachment, :class => 'attachment',:label => false, :placeholder => "Attachment" %>
   <br>
-  <%= f.label :organiser %>
-  <%= f.text_field :organiser %>
+  <%= f.text_field :organiser, :class => 'Organiser',:label => false, :placeholder => "Organiser" %>
   <br>
-  <%= f.label :date %>
-  <%= f.text_field :date %>
+  <%= f.text_field :date, :class => 'date',:label => false, :placeholder => "Date" %>
   <br>
-   <%= f.label :time %>
-   <%= f.text_field :meet_time, :value => @call.lmeettime ? (@call.lmeettime.strftime('%H:%M')) : '',:required => true%>
+   <%= f.text_field :meet_time, :value => @call.lmeettime ? (@call.lmeettime.strftime('%H:%M')) : '',:required => true, :class => 'calltime',:label => false, :placeholder => "Call time"%>
   <br>
   <br>
   <table border="1">

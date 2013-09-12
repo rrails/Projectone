@@ -1,12 +1,15 @@
-<%= form_tag '/login' do %>
-
-  <%= label_tag :username%>
-  <%= text_field_tag :username %>
-  <br>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-
-  <br>
-  <%= submit_tag 'Login', :class => 'button' %>
-
-<% end %>
+<br>
+<br>
+<br>
+<div class="row">
+  <div class="large-4 columns">
+    <%= form_tag '/login' do %>
+      <h2>Sign In</h2>
+      <%= text_field_tag :username, nil,placeholder: 'User Name',:label => false%>
+      <br>
+      <%= password_field_tag :password, nil,placeholder: 'Password',:label => false %>
+      <br>
+      <%= submit_tag 'Login', :class => 'button' %>
+    <% end %>
+  </div>
+</div>

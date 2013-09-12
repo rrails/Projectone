@@ -53,6 +53,9 @@ body {
   background-position: center;
 }
 
-
-
-
+.main-content{
+  text-align: center;
+  font-size: 1em;
+}
+#user_timezone{
+}

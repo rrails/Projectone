@@ -46,6 +46,9 @@ button-style: radius;
 
 }
 
+table.width_hundred {
+  width: 100%;
+}
 
 body {
   padding-bottom: 65px;
@@ -57,5 +60,6 @@ body {
   text-align: center;
   font-size: 1em;
 }
-#user_timezone{
+.callsetup{
+  text-align: left;
 }

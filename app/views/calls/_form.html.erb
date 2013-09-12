@@ -1,33 +1,36 @@
-<%= form_for @call do |f| %>
-
-  <%= f.text_field :subject, :class => 'subject',:label => false, :placeholder => "Subject" %>
-  <br>
-  <%= f.text_field :calldetail, :class => 'calldetail',:label => false, :placeholder => "Call Reference" %>
-  <br>
-   <%= f.text_field :attachment, :class => 'attachment',:label => false, :placeholder => "Attachment" %>
-  <br>
-  <%= f.text_field :organiser, :class => 'Organiser',:label => false, :placeholder => "Organiser" %>
-  <br>
-  <%= f.text_field :date, :class => 'date',:label => false, :placeholder => "Date" %>
-  <br>
-   <%= f.text_field :meet_time, :value => @call.lmeettime ? (@call.lmeettime.strftime('%H:%M')) : '',:required => true, :class => 'calltime',:label => false, :placeholder => "Call time"%>
-  <br>
-  <br>
-  <table border="1">
-  <tr>
-    <th>Name</th>
-    <th>Location</th>
-    <th>Availability</th>
-    <th>Required</th>
-  </tr>
-    <tr>
-      <% @users.each do |user| %>
-      <td><%= user.name %></td>
-      <td><%= user.location %></td>
-      <td><%= user.lstarttime.strftime('%H:%M') %> - <%= user.lendtime.strftime('%H:%M') %></td>
-      <td class="checker"><%= check_box_tag 'call[user_ids][]', user.id, user.in?(@call.users) %></td>
-    </tr>
+<div class="row">
+  <div class="large-5 columns">
+    <%= form_for @call do |f| %>
+      <%= f.text_field :subject, :class => 'subject',:label => false, :placeholder => "Subject" %>
+      <br>
+      <%= f.text_field :calldetail, :class => 'calldetail',:label => false, :placeholder => "Call Reference" %>
+      <br>
+       <%= f.text_field :attachment, :class => 'attachment',:label => false, :placeholder => "Attachment" %>
+      <br>
+      <%= f.text_field :organiser, :class => 'Organiser',:label => false, :placeholder => "Organiser" %>
+      <br>
+      <%= f.text_field :date, :class => 'date',:label => false, :placeholder => "Date" %>
+      <br>
+       <%= f.text_field :meet_time, :value => @call.lmeettime ? (@call.lmeettime.strftime('%H:%M')) : '',:required => true, :class => 'calltime',:label => false, :placeholder => "Call time"%>
+      <br>
+      <br>
+      <table border="1" >
+        <tr>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Availability</th>
+          <th>Required</th>
+        </tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.location %></td>
+            <td><%= user.lstarttime.strftime('%H:%M') %> - <%= user.lendtime.strftime('%H:%M') %></td>
+            <td class="checker"><%= check_box_tag 'call[user_ids][]', user.id, user.in?(@call.users) %></td>
+          </tr>
+        <% end %>
+      </table>
+      <%= f.submit 'Submit', :class => "button" %>
     <% end %>
-  </table>
-<%= f.submit'Submit', :class => "small button" %>
-<% end %>
+  </div>
+</div>
